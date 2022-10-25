@@ -13,6 +13,7 @@ window.onload = async () => {
     // const randomCat = urlParts[4]
     // console.log("randomCat: ", randomCat)
 
+    const div = document.createElement("div")
     const img = document.createElement("img");
 
     console.log(img)
@@ -20,10 +21,8 @@ window.onload = async () => {
     img.setAttribute("src", url)
     // img.id = "cat-image"
 
-
-
-
-
-
+    document.body.append(div)
+    div.append(img)
+    img.style.width = "400px" // hard coded
 
 }
