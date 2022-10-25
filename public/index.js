@@ -24,5 +24,26 @@ window.onload = async () => {
     document.body.append(div)
     div.append(img)
     img.style.width = "400px" // hard coded
-
+    const buttons = document.createElement("buttons");
+    const button1 = document.createElement("button");
+    const button2 = document.createElement("button");
+    const button3 = document.createElement("button");
+    const input = document.createElement("input");
+    div.append(buttons)
+    buttons.append(button1)
+    buttons.append(button2)
+    buttons.append(button3)
+    button1.id = "vote-pic"
+    button2.id = "delete-comment"
+    button3.id = "new-kitten"
+    button1.innerText = "vote"
+    button2.innerText = "delete comment"
+    button3.innerText = "random cat"
+    button1.type = "button"
+    button2.type = "button"
+    button3.type = "button"
+    div.append(input);
+    input.type = "text"
+    input.id = "comment"
+    console.log(body)
 }
