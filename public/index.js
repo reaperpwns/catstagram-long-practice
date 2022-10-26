@@ -1,4 +1,10 @@
+import { createMainContent } from "./main";
+
+
 window.onload = async () => {
+    // initializePage()
+    // createMainContent()
+
     const res = await fetch('https://api.thecatapi.com/v1/images/search');
     const data = await res.json()
     // console.log("res: ", res)
@@ -53,12 +59,4 @@ window.onload = async () => {
     input.id = "comment"
 
     console.log(document.body)
-
-
-    // input.addEventListener("input", function (event) {
-    //     if (event.key === "Enter") {
-    //         event.preventDefault();
-    //         const comment = document.getElementById("comment").click();
-    //     }
-    // })
 }
