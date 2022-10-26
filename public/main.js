@@ -2,10 +2,10 @@ export const initializePage = () => {
     const mainContainer = document.createElement('section');
     mainContainer.className = "designContainer";
     mainContainer.style.display = "flex";
-    mainContainer.style.width = "500px";
-    mainContainer.style.justifyContent = "center"
+    mainContainer.style.width = "auto";
     mainContainer.style.alignItems = "center"
     mainContainer.style.flexDirection = "column";
+    document.body.style.backgroundColor = "beige";
     document.body.appendChild(mainContainer);
 }
 
@@ -13,6 +13,7 @@ export const initializePage = () => {
 export const createMainContent = () => {
     const h1 = document.createElement("h1");
     h1.innerText = "Catstagram"
+    h1.style.color = "blue";
     const container = document.querySelector(".designContainer");
     const img = document.createElement('img');
     img.style.maxWidth = "500px";
@@ -29,47 +30,62 @@ const fetchImg = async () => {
     catImg.src = data[0].url;
 }
 
-export const interaction = () => {
-    const button1 = document.createElement('button');
-    const button2 = document.createElement('button');
-    const button3 = document.createElement('button');
-    const button2Input = document.createElement('input');
-    button1.id = "vote-pic";
-    button1.innerText = "vote"
-    button1.type = "button"
-    button2.id = "comment";
-    button2.type = "button"
-    button2.innerText = "comment"
-    button2Input.id = "comment-input";
-    button2Input.type = "input";
-    button2Input.placeholder = "Say something nice!";
-    button3.id = "random-cat";
-    button3.type = "button";
-    button3.innerText = "random cat!"
+export const upvoteButton = () => {
+    const upvoteButton = document.createElement('button');
     const container = document.querySelector('.designContainer');
-    container.appendChild(button1)
-    container.appendChild(button2)
-    container.appendChild(button2Input)
-    container.appendChild(button3)
+    const p = document.createElement("p");
+    upvoteButton.id = "vote-pic";
+    upvoteButton.innerText = "vote"
+    upvoteButton.type = "button"
+    container.appendChild(upvoteButton)
+    container.appendChild(p)
 
-    // let count = 0
-    // button1.addEventListener("click", () => {
-    //     count++
-    //     console.log(count)
-    // })
+    let count = 0
+    upvoteButton.addEventListener("click", () => {
+        count++
+        p.innerText = `this cat has ${count} upvotes!`
+    })
+}
 
+export const comment = () => {
+    const commentButton = document.createElement('button');
+    const commentInput = document.createElement('input');
+    const container = document.querySelector('.designContainer');
     const ul = document.createElement("ul")
-    const li = document.createElement("li")
+    commentButton.id = "comment";
+    commentButton.type = "button"
+    commentButton.innerText = "comment"
+    commentInput.id = "comment-input";
+    commentInput.type = "input";
+    commentInput.placeholder = "Say something nice!";
+    container.appendChild(commentButton)
+    container.appendChild(commentInput)
     document.body.appendChild(ul)
     let input = document.getElementById("comment-input")
 
-    button2.addEventListener("click", () => {
+    commentButton.addEventListener("click", () => {
+        const li = document.createElement("li")
+        const deleteButton = document.createElement('button');
+        deleteButton.type = "button";
+        deleteButton.innerText = "DELETE";
         li.innerText = input.value
+        li.appendChild(deleteButton)
         ul.appendChild(li)
-
-        console.log(ul)
+        input.value = "";
+        deleteButton.addEventListener("click", () => {
+            li.remove();
+        })
     })
+}
 
-    console.log(document.body)
-
+export const randomCat = () => {
+    const container = document.querySelector('.designContainer');
+    const randomCat = document.createElement('button');
+    randomCat.id = "random-cat";
+    randomCat.type = "button";
+    randomCat.innerText = "random cat!"
+    container.appendChild(randomCat)
+    randomCat.addEventListener("click", () => {
+        fetchImg();
+    })
 }
