@@ -14,9 +14,10 @@ export const createMainContent = () => {
     const h1 = document.createElement("h1");
     h1.innerText = "Catstagram"
     const container = document.querySelector(".designContainer");
-    container.appendChild(h1)
     const img = document.createElement('img');
-    img.style.width = "100px";
+    img.style.maxWidth = "500px";
+
+    container.appendChild(h1)
     container.appendChild(img);
     fetchImg();
 }
@@ -50,4 +51,25 @@ export const interaction = () => {
     container.appendChild(button2)
     container.appendChild(button2Input)
     container.appendChild(button3)
+
+    // let count = 0
+    // button1.addEventListener("click", () => {
+    //     count++
+    //     console.log(count)
+    // })
+
+    const ul = document.createElement("ul")
+    const li = document.createElement("li")
+    document.body.appendChild(ul)
+    let input = document.getElementById("comment-input")
+
+    button2.addEventListener("click", () => {
+        li.innerText = input.value
+        ul.appendChild(li)
+
+        console.log(ul)
+    })
+
+    console.log(document.body)
+
 }

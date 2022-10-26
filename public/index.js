@@ -7,9 +7,5 @@ window.onload = async () => {
     initializePage()
     createMainContent()
     interaction();
-    console.log(document.body)
+    // console.log(document.body)
 }
-
-window.addEventListener("click", () => {
-    
-})
