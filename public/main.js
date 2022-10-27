@@ -17,7 +17,6 @@ export const createMainContent = () => {
     const container = document.querySelector(".designContainer");
     const img = document.createElement('img');
     img.style.maxWidth = "500px";
-
     container.appendChild(h1)
     container.appendChild(img);
     fetchImg();
@@ -32,18 +31,28 @@ const fetchImg = async () => {
 
 export const upvoteButton = () => {
     const upvoteButton = document.createElement('button');
+    const downvoteButton = document.createElement('button');
     const container = document.querySelector('.designContainer');
     const p = document.createElement("p");
-    upvoteButton.id = "vote-pic";
-    upvoteButton.innerText = "vote"
+    upvoteButton.id = "up-vote-pic";
+    upvoteButton.innerText = "Up-Vote"
     upvoteButton.type = "button"
+    downvoteButton.id = "down-vote-pic";
+    downvoteButton.innerText = "Down-Vote"
+    downvoteButton.type = "button"
     container.appendChild(upvoteButton)
+    container.appendChild(downvoteButton)
     container.appendChild(p)
 
     let count = 0
     upvoteButton.addEventListener("click", () => {
-        count++
-        p.innerText = `this cat has ${count} upvotes!`
+        count++;
+        p.innerText = `this cat has ${count} votes!`
+    })
+
+    downvoteButton.addEventListener("click", () => {
+        count--;
+        p.innerText = `this cat has ${count} votes!`
     })
 }
 
