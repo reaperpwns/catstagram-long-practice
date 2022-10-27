@@ -58,16 +58,14 @@ export const upvoteButton = () => {
     })
 }
 
-
-const idComment = (comm) => {
-    const li = document.querySelector("li")
-}
+let commentArr = [];
+const ul = document.createElement("ul")
+document.body.appendChild(ul)
 
 export const comment = () => {
     const commentButton = document.createElement('button');
     const commentInput = document.createElement('input');
     const container = document.querySelector('.designContainer');
-    const ul = document.createElement("ul")
     commentButton.id = "comment";
     commentButton.type = "button"
     commentButton.innerText = "comment"
@@ -76,7 +74,6 @@ export const comment = () => {
     commentInput.placeholder = "Say something nice!";
     container.appendChild(commentButton)
     container.appendChild(commentInput)
-    document.body.appendChild(ul)
     let input = document.getElementById("comment-input")
 
 
@@ -85,20 +82,19 @@ export const comment = () => {
         const li = document.createElement("li")
         const deleteButton = document.createElement('button');
         deleteButton.type = "button";
-        deleteButton.innerText = "DELETE";
         li.innerText = input.value
+        commentArr.push(input.value)
+        localStorage.setItem(`comments`, JSON.stringify(commentArr))
         li.appendChild(deleteButton)
         ul.appendChild(li)
         input.value = "";
+        deleteButton.innerText = "DELETE";
         deleteButton.addEventListener("click", () => {
             li.remove();
         })
-
-        localStorage.setItem("comment", "")
-
-
     })
 }
+
 
 export const randomCat = () => {
     const container = document.querySelector('.designContainer');
@@ -110,4 +106,15 @@ export const randomCat = () => {
     randomCat.addEventListener("click", () => {
         fetchImg();
     })
+}
+
+export function commentBoard() {
+    if (localStorage.getItem(`comments`)) {
+        let comments = JSON.parse(localStorage.getItem(`comments`));
+        comments.forEach(comm => {
+            const li = document.createElement("li")
+            li.innerText = comm;
+            ul.appendChild(li)
+        });
+    }
 }
