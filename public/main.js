@@ -48,12 +48,19 @@ export const upvoteButton = () => {
     upvoteButton.addEventListener("click", () => {
         count++;
         p.innerText = `this cat has ${count} votes!`
+        localStorage.setItem("upvote", count)
     })
 
     downvoteButton.addEventListener("click", () => {
         count--;
         p.innerText = `this cat has ${count} votes!`
+        localStorage.setItem("downvote", count)
     })
+}
+
+
+const idComment = (comm) => {
+    const li = document.querySelector("li")
 }
 
 export const comment = () => {
@@ -72,6 +79,8 @@ export const comment = () => {
     document.body.appendChild(ul)
     let input = document.getElementById("comment-input")
 
+
+
     commentButton.addEventListener("click", () => {
         const li = document.createElement("li")
         const deleteButton = document.createElement('button');
@@ -84,6 +93,10 @@ export const comment = () => {
         deleteButton.addEventListener("click", () => {
             li.remove();
         })
+
+        localStorage.setItem("comment", "")
+
+
     })
 }
 
